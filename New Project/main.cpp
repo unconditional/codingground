@@ -11,14 +11,14 @@ using namespace std;
 
 const int NUM_STUDENTS = 10;
 
-// Returns true if all files read successfully
+
 void ReadFiles(string namesArray[], int proj1Array[], int proj2Array[], int testArray[]) 
 {
     ifstream inFile;
     bool errorOcurred = false;
     
     // Read Names.txt
-	inFile.open("Names.txt");
+    inFile.open("Names.txt");
     if (inFile.fail())
     {
         cout << "Failed to open Names.txt" << endl;
@@ -34,9 +34,9 @@ void ReadFiles(string namesArray[], int proj1Array[], int proj2Array[], int test
         }
         inFile.close();
     }
-	
+    
     // Read Proj1.txt
-	inFile.open("Proj1.txt");
+    inFile.open("Proj1.txt");
     if (inFile.fail())
     {
         cout << "Failed to open Proj1.txt" << endl;
@@ -51,7 +51,7 @@ void ReadFiles(string namesArray[], int proj1Array[], int proj2Array[], int test
     }
 
     // Read Proj2.txt
-	inFile.open("Proj2.txt");
+    inFile.open("Proj2.txt");
     if (inFile.fail())
     {
         cout << "Failed to open Proj2.txt" << endl;
@@ -66,19 +66,16 @@ void ReadFiles(string namesArray[], int proj1Array[], int proj2Array[], int test
     }
 
     // Read Test.txt
-	inFile.open("Test.txt");
-	if (inFile.fail())
+    inFile.open("Test.txt");
+    if (inFile.fail())
     {
         cout << "Failed to open Test.txt" << endl;
     }
     else 
     {
-        while (!inFile.eof())
+        for (int i = 0; i < NUM_STUDENTS && !inFile.eof(); i++)
         {
-            for (int i = 0; i < NUM_STUDENTS; i++)
-            {
-                inFile >> testArray[i];
-            }
+            inFile >> testArray[i];
         }
         inFile.close();
     }
@@ -154,7 +151,5 @@ int main()
     
     DisplayData(namesArray, proj1Array, proj2Array, testArray);
     
-	return 0;
+    return 0;
 }
-
-
